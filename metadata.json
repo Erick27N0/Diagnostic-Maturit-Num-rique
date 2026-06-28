@@ -1,0 +1,6 @@
+{
+  "name": "Diagnostic Maturité Numérique",
+  "description": "Outil diagnostic agile de maturité numérique et IA pour dirigeants et managers - Nouvance IA",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
