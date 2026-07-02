@@ -54,8 +54,51 @@ export default function App() {
     setStep('capture');
   };
 
-  const handleSubmitLead = (submittedLead: LeadData) => {
+  const handleSubmitLead = async (submittedLead: LeadData) => {
     setLeadData(submittedLead);
+
+    // Prepare full diagnostic payload for Google Sheets Web App API script
+    const googleSheetsScriptUrl = (import.meta as any).env.VITE_GOOGLE_SHEETS_SCRIPT_URL;
+    
+    // Format recommendations as a human-readable text block for clean spreadsheet cell integration
+    const recommendationsText = results.recommendations
+      .map((rec) => `• [${rec.pillarLabel}] ${rec.title} : ${rec.action} (${rec.impactGain})`)
+      .join('\n');
+
+    const payload = {
+      submittedAt: new Date().toISOString(),
+      firstName: submittedLead.firstName,
+      email: submittedLead.email,
+      phone: submittedLead.phone,
+      company: submittedLead.company || '',
+      globalScore: `${results.globalScore}%`,
+      statusLabel: results.statusLabel,
+      hoursSavedPerMonth: `${results.hoursSavedPerMonth}h`,
+      recommendations: recommendationsText,
+    };
+
+    console.log('Nouvance IA - Transmission des données vers Google Sheets:', payload);
+
+    if (googleSheetsScriptUrl && googleSheetsScriptUrl !== 'https://script.google.com/macros/s/.../exec') {
+      try {
+        // Post to Google Sheets script with 'no-cors' option to prevent cross-origin issues
+        // with Google's redirecting App Script URLs, ensuring robust delivery.
+        await fetch(googleSheetsScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+        console.log('Nouvance IA - Données envoyées avec succès à Google Sheets.');
+      } catch (error) {
+        console.error('Nouvance IA - Erreur lors de l\'envoi des données à Google Sheets:', error);
+      }
+    } else {
+      console.warn('Nouvance IA - VITE_GOOGLE_SHEETS_SCRIPT_URL n\'est pas défini ou utilise un placeholder. Simulation d\'envoi réussie.');
+    }
+
     setStep('dashboard');
   };
 
