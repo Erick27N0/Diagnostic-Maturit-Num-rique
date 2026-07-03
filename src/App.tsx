@@ -36,7 +36,7 @@ export default function App() {
   };
 
   const handleNextQuestion = () => {
-    if (currentIndex < DIAGNOSTIC_QUESTIONS.length - 1) {
+    if (currentIndex < 6) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       // Last question completed -> trigger Section 2 Gate flow

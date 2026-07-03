@@ -28,7 +28,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({ onStart }) => {
         onClick={onStart}
         className="group relative inline-flex items-center justify-center px-8 py-4 h-14 text-base font-semibold text-white bg-[#132B63] rounded-[8px] shadow-sm hover:bg-[#1a3a82] active:scale-[0.98] transition-all duration-200 cursor-pointer"
       >
-        <span>Démarrer mon diagnostic agile (5 questions)</span>
+        <span>Démarrer mon diagnostic agile </span>
         <ArrowRight className="ml-2.5 w-5 h-5 group-hover:translate-x-1 transition-transform" />
       </button>
 

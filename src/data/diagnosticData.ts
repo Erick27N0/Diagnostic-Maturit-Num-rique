@@ -1,168 +1,394 @@
 import { Question, PillarScore, Recommendation, UserAnswers, PillarId } from '../types';
 
 export const DIAGNOSTIC_QUESTIONS: Question[] = [
+  // Page 1 : Collaboration Q1 & Q2
   {
     id: 'q1_collab',
     pillar: 'collaboration',
     pillarLabel: 'Collaboration',
-    title: 'Comment vos équipes collaborent-elles au quotidien ?',
-    subtitle: 'Évaluation des flux de communication et du partage de l’information',
+    title: 'Quel est votre canal de communication principal en interne ?',
+    subtitle: 'Évaluation des flux de communication et de la réactivité',
     options: [
       {
-        id: 'c_0',
+        id: 'col_1_0',
         points: 0,
-        text: 'Échanges par emails isolés avec pièces jointes multiples',
-        description: 'Perte de temps en recherche et risques d’erreurs de versionning'
+        text: 'Emails individuels ou appels téléphoniques improvisés',
+        description: 'Recherche d\'information complexe et pertes de temps quotidiennes'
       },
       {
-        id: 'c_33',
-        points: 33,
-        text: 'Messagerie instantanée déployée mais canaux non structurés',
-        description: 'Surcharge informationnelle et interruptions fréquentes'
+        id: 'col_1_50',
+        points: 50,
+        text: 'Messagerie d\'équipe (Teams/Slack) active mais sans structure de canaux',
+        description: 'Surcharge cognitive, interruptions incessantes et sentiment d\'urgence'
       },
       {
-        id: 'c_66',
-        points: 66,
-        text: 'Espaces partagés (Teams/Slack/Drive) structurés avec conventions',
-        description: 'Bonne visibilité asynchrone sur les projets en cours'
-      },
-      {
-        id: 'c_100',
+        id: 'col_1_100',
         points: 100,
-        text: 'Écosystème collaboratif unifié et parfaitement asynchrone',
-        description: 'Réduction drastique des réunions internes et zéro email superflu'
+        text: 'Messagerie structurée avec des règles de communication asynchrone',
+        description: 'Zéro email interne superflu et des réunions limitées au strict nécessaire'
       }
     ]
   },
   {
-    id: 'q2_ai',
+    id: 'q2_collab',
+    pillar: 'collaboration',
+    pillarLabel: 'Collaboration',
+    title: 'Comment organisez-vous le suivi de vos projets d\'équipe ?',
+    subtitle: 'Mesure de la transparence et de la synchronisation',
+    options: [
+      {
+        id: 'col_2_0',
+        points: 0,
+        text: 'Pas d\'outil dédié, suivi verbal ou notes personnelles',
+        description: 'Manque de visibilité globale et difficultés de coordination'
+      },
+      {
+        id: 'col_2_50',
+        points: 50,
+        text: 'Fichiers Excel/Word partagés ou tableur mis à jour périodiquement',
+        description: 'Processus lourd à maintenir et risques d\'erreurs de versions'
+      },
+      {
+        id: 'col_2_100',
+        points: 100,
+        text: 'Gestionnaire de tâches collaboratif (Trello, Monday, Notion) en temps réel',
+        description: 'Responsabilités claires, avancement visuel et fluidité optimale'
+      }
+    ]
+  },
+
+  // Page 2 : Collaboration Q3 & Intelligence Artificielle Q4
+  {
+    id: 'q3_collab',
+    pillar: 'collaboration',
+    pillarLabel: 'Collaboration',
+    title: 'Comment sont gérées et documentées vos réunions d\'équipe ?',
+    subtitle: 'Optimisation du temps de réunion et de la capitalisation d\'idées',
+    options: [
+      {
+        id: 'col_3_0',
+        points: 0,
+        text: 'Réunions systématiques, longues et sans ordre du jour prédéfini',
+        description: 'Réunions chronophages avec faible niveau d\'engagement'
+      },
+      {
+        id: 'col_3_50',
+        points: 50,
+        text: 'Réunions régulières avec compte-rendu rédigé manuellement',
+        description: 'Rédaction fastidieuse et délais dans la diffusion des décisions'
+      },
+      {
+        id: 'col_3_100',
+        points: 100,
+        text: 'Réunions limitées à l\'essentiel avec synthèses assistées par IA',
+        description: 'Partage d\'informations instantané et focus sur la valeur ajoutée'
+      }
+    ]
+  },
+  {
+    id: 'q4_ai',
     pillar: 'ai',
     pillarLabel: 'Intelligence Artificielle',
-    title: 'Quel est le niveau d’adoption de l’IA générative dans votre structure ?',
-    subtitle: 'Mesure de l’intégration des assistants intelligents dans vos activités',
+    title: 'Quel est le niveau d\'adoption de l\'IA générative chez vos collaborateurs ?',
+    subtitle: 'Évaluation de la maturité des usages d\'outils comme ChatGPT',
     options: [
       {
-        id: 'ai_0',
+        id: 'ai_1_0',
         points: 0,
-        text: 'Aucun usage officiel, scepticisme ou méconnaissance des outils',
-        description: 'Tâches rédactionnelles et d’analyse entièrement manuelles'
+        text: 'Aucun usage officiel, scepticisme ou méconnaissance',
+        description: 'Vos tâches de rédaction et d\'analyse restent 100% manuelles'
       },
       {
-        id: 'ai_33',
-        points: 33,
-        text: 'Usages individuels informels ("Shadow AI") sans cadre sécurisé',
-        description: 'Initiatives disparates sans mutualisation des meilleurs prompts'
+        id: 'ai_1_50',
+        points: 50,
+        text: 'Utilisation individuelle informelle sans cadre ni partage de prompts',
+        description: 'Risques de sécurité (fuites de données) et inefficacité globale'
       },
       {
-        id: 'ai_66',
-        points: 66,
-        text: 'Licences professionnelles déployées sur les cas d’usage prioritaires',
-        description: 'Gains de temps réels en synthèse de réunions et rédaction'
-      },
-      {
-        id: 'ai_100',
+        id: 'ai_1_100',
         points: 100,
-        text: 'IA intégrée au cœur des processus métiers (assistants sur mesure)',
-        description: 'Avantage concurrentiel décisif et montée en compétence continue'
+        text: 'Licences professionnelles sécurisées et partages de bonnes pratiques',
+        description: 'Gains de temps massifs, cas d\'usage validés et culture de l\'IA'
+      }
+    ]
+  },
+
+  // Page 3 : Intelligence Artificielle Q5 & Q6
+  {
+    id: 'q5_ai',
+    pillar: 'ai',
+    pillarLabel: 'Intelligence Artificielle',
+    title: 'Comment créez-vous vos contenus professionnels récurrents ?',
+    subtitle: 'Rédaction commerciale, courriels de prospection, rapports',
+    options: [
+      {
+        id: 'ai_2_0',
+        points: 0,
+        text: 'Création manuelle récurrente à partir d\'une page blanche',
+        description: 'Processus lent demandant un investissement en temps important'
+      },
+      {
+        id: 'ai_2_50',
+        points: 50,
+        text: 'Modèles de documents fixes à personnaliser manuellement',
+        description: 'Manque d\'originalité et de personnalisation approfondie'
+      },
+      {
+        id: 'ai_2_100',
+        points: 100,
+        text: 'Génération assistée par des invites (prompts) d\'IA structurées',
+        description: 'Rédaction ultra-rapide, personnalisée et hautement qualitative'
       }
     ]
   },
   {
-    id: 'q3_sec',
-    pillar: 'security',
-    pillarLabel: 'Sécurité & Gouvernance',
-    title: 'Comment assurez-vous la protection de vos données sensibles ?',
-    subtitle: 'Niveau de maîtrise des accès, des mots de passe et de la conformité',
+    id: 'q6_ai',
+    pillar: 'ai',
+    pillarLabel: 'Intelligence Artificielle',
+    title: 'Comment utilisez-vous la donnée pour guider vos choix stratégiques ?',
+    subtitle: 'Exploitation des données d\'entreprise pour la prise de décision',
     options: [
       {
-        id: 's_0',
+        id: 'ai_3_0',
         points: 0,
-        text: 'Mots de passe simples partagés, pas de double authentification',
-        description: 'Vulnérabilité critique face au hameçonnage et pertes de données'
+        text: 'Décisions basées sur l\'intuition sans données consolidées',
+        description: 'Risques d\'angles morts stratégiques et d\'erreurs de ciblage'
       },
       {
-        id: 's_33',
-        points: 33,
-        text: 'Sauvegardes existantes mais gestion des droits d’accès hétérogène',
-        description: 'Arrivées et départs de collaborateurs difficiles à auditer'
+        id: 'ai_3_50',
+        points: 50,
+        text: 'Rapports statiques créés périodiquement sur des tableurs',
+        description: 'Analyse lente, chronophage et tournée vers le passé'
       },
       {
-        id: 's_66',
-        points: 66,
-        text: 'Double authentification (2FA) systématisée et coffre-fort de mots de passe',
-        description: 'Politique de sécurité claire et charte numérique active'
-      },
-      {
-        id: 's_100',
+        id: 'ai_3_100',
         points: 100,
-        text: 'Gouvernance Zero Trust, sauvegardes automatisées et conformité RGPD totale',
-        description: 'Résilience maximale et confiance absolue clients/partenaires'
+        text: 'Tableaux de bord dynamiques et analyses prédictives IA actives',
+        description: 'Vision claire du futur et décisions éclairées en quelques secondes'
       }
     ]
   },
+
+  // Page 4 : Automatisation Q7 & Q8
   {
-    id: 'q4_auto',
+    id: 'q7_auto',
     pillar: 'automation',
     pillarLabel: 'Automatisation',
-    title: 'Comment exécutez-vous les tâches récurrentes (saisie, relances, synchronisation) ?',
-    subtitle: 'Identification des goulots d’étranglement dans vos processus métiers',
+    title: 'Comment gérez-vous la saisie d\'informations entre vos différents logiciels ?',
+    subtitle: 'Évaluation des doubles saisies et de l\'intégration logicielle',
     options: [
       {
-        id: 'auto_0',
+        id: 'aut_1_0',
         points: 0,
-        text: 'Exécution 100% manuelle avec doubles saisies entre logiciels',
-        description: 'Faiblesse de productivité et frustration des collaborateurs'
+        text: 'Recopie manuelle et systématique d\'une plateforme à une autre',
+        description: 'Tâches ultra-répétitives à faible valeur ajoutée et source d\'erreurs'
       },
       {
-        id: 'auto_33',
-        points: 33,
-        text: 'Utilisation ponctuelle d’exports CSV et de macros tableur',
-        description: 'Manipulations chronophages sujettes aux erreurs humaines'
+        id: 'aut_1_50',
+        points: 50,
+        text: 'Exports et imports manuels de fichiers Excel/CSV de façon régulière',
+        description: 'Manipulations chronophages et décalage temporel dans les données'
       },
       {
-        id: 'auto_66',
-        points: 66,
-        text: 'Connecteurs actifs (Make / Zapier / API) sur les flux commerciaux',
-        description: 'Automatisation des devis, factures et création de fiches clients'
-      },
-      {
-        id: 'auto_100',
+        id: 'aut_1_100',
         points: 100,
-        text: 'Workflows autonomes de bout en bout avec déclencheurs intelligents',
-        description: 'Les outils dialoguent en temps réel sans intervention manuelle'
+        text: 'Flux automatisés en temps réel via des API ou connecteurs (Make/Zapier)',
+        description: 'Les outils dialoguent seuls sans aucune intervention humaine'
       }
     ]
   },
   {
-    id: 'q5_doc',
-    pillar: 'documentary',
-    pillarLabel: 'Gestion Documentaire',
-    title: 'À quelle vitesse vos collaborateurs accèdent-ils à l’information stratégique ?',
-    subtitle: 'Organisation de la mémoire d’entreprise et des documents',
+    id: 'q8_auto',
+    pillar: 'automation',
+    pillarLabel: 'Automatisation',
+    title: 'Quelle est la maturité de votre processus de facturation et relance ?',
+    subtitle: 'Fluidité de la chaîne commerciale et encaissement',
     options: [
       {
-        id: 'd_0',
+        id: 'aut_2_0',
         points: 0,
-        text: 'Documents dispersés sur des disques locaux ou dossiers désorganisés',
-        description: 'Perte moyenne de 3 à 4 heures par semaine à chercher l’information'
+        text: 'Édition manuelle des factures et suivi informel',
+        description: 'Risques d\'oublis, délais de paiement rallongés et perte de trésorerie'
       },
       {
-        id: 'd_33',
-        points: 33,
-        text: 'Espace cloud partagé mais arborescence complexe et doublons',
-        description: 'Hésitations fréquentes sur la version officielle d’un document'
+        id: 'aut_2_50',
+        points: 50,
+        text: 'Logiciel de facturation dédié mais relances manuelles au cas par cas',
+        description: 'Processus lourd demandant un suivi rigide de vos équipes'
       },
       {
-        id: 'd_66',
-        points: 66,
-        text: 'Base de connaissances centralisée (Notion/Sharepoint) indexée',
-        description: 'Onboarding des nouveaux arrivants rapide et fiches pratiques à jour'
-      },
-      {
-        id: 'd_100',
+        id: 'aut_2_100',
         points: 100,
-        text: 'Cerveau numérique d’entreprise avec moteur de recherche instantané',
-        description: 'Toute l’expertise de l’entreprise accessible en moins de 5 secondes'
+        text: 'Facturation intégrée au CRM avec relances automatiques programmées',
+        description: 'Trésorerie optimisée et relances courtoises automatiques'
+      }
+    ]
+  },
+
+  // Page 5 : Automatisation Q9 & Sécurité & Gouvernance Q10
+  {
+    id: 'q9_auto',
+    pillar: 'automation',
+    pillarLabel: 'Automatisation',
+    title: 'Comment gérez-vous l\'intégration (onboarding) de vos nouveaux clients ?',
+    subtitle: 'Mise en œuvre des services et expérience de démarrage',
+    options: [
+      {
+        id: 'aut_3_0',
+        points: 0,
+        text: 'Processus informel et entièrement manuel au coup par coup',
+        description: 'Manque de professionnalisme perçu et oublis de documents clés'
+      },
+      {
+        id: 'aut_3_50',
+        points: 50,
+        text: 'Liste de contrôle (checklist) suivie manuellement par vos équipes',
+        description: 'Charge mentale élevée pour l\'équipe et lenteur de démarrage'
+      },
+      {
+        id: 'aut_3_100',
+        points: 100,
+        text: 'Espace client, mails et outils configurés via des workflows automatiques',
+        description: 'Expérience d\'onboarding remarquable et immédiate sans effort'
+      }
+    ]
+  },
+  {
+    id: 'q10_sec',
+    pillar: 'security',
+    pillarLabel: 'Sécurité & Gouvernance',
+    title: 'Comment gérez-vous l\'accès aux mots de passe de vos outils ?',
+    subtitle: 'Niveau de protection des identifiants sensibles de l\'entreprise',
+    options: [
+      {
+        id: 'sec_1_0',
+        points: 0,
+        text: 'Mots de passe simples, identiques ou partagés sans sécurité',
+        description: 'Vulnérabilité critique aux cyberattaques et risques de vol'
+      },
+      {
+        id: 'sec_1_50',
+        points: 50,
+        text: 'Mots de passe enregistrés individuellement sur les navigateurs web',
+        description: 'Aucune centralisation ni contrôle lors du départ d\'un collaborateur'
+      },
+      {
+        id: 'sec_1_100',
+        points: 100,
+        text: 'Coffre-fort d\'entreprise partagé (1Password/Bitwarden) avec 2FA',
+        description: 'Sécurité totale, droits révocables en 1 clic et confort d\'accès'
+      }
+    ]
+  },
+
+  // Page 6 : Sécurité & Gouvernance Q11 & Q12
+  {
+    id: 'q11_sec',
+    pillar: 'security',
+    pillarLabel: 'Sécurité & Gouvernance',
+    title: 'Quelle est la sensibilisation de vos équipes face au piratage ?',
+    subtitle: 'Évaluation de la résilience humaine face au phishing et ingénierie sociale',
+    options: [
+      {
+        id: 'sec_2_0',
+        points: 0,
+        text: 'Aucune sensibilisation, nous réagissons si un problème survient',
+        description: 'Risque majeur d\'usurpation d\'identité ou d\'arnaque au président'
+      },
+      {
+        id: 'sec_2_50',
+        points: 50,
+        text: 'Charte informatique signée ou brief ponctuel à l\'onboarding',
+        description: 'Vigilance moyenne qui diminue rapidement au fil du temps'
+      },
+      {
+        id: 'sec_2_100',
+        points: 100,
+        text: 'Formations continues, tests d\'intrusion réguliers et alertes actives',
+        description: 'Une culture de sécurité forte qui protège activement l\'entreprise'
+      }
+    ]
+  },
+  {
+    id: 'q12_sec',
+    pillar: 'security',
+    pillarLabel: 'Sécurité & Gouvernance',
+    title: 'Comment gérez-vous les sauvegardes de vos données et fichiers critiques ?',
+    subtitle: 'Plan de reprise d\'activité et intégrité des données',
+    options: [
+      {
+        id: 'sec_3_0',
+        points: 0,
+        text: 'Sauvegardes manuelles et irrégulières sur supports physiques',
+        description: 'Risque élevé de pertes définitives de dossiers clients ou financiers'
+      },
+      {
+        id: 'sec_3_50',
+        points: 50,
+        text: 'Synchronisation automatique sur le cloud par défaut (OneDrive/Drive)',
+        description: 'Protection basique mais vulnérable en cas de ransomware actif'
+      },
+      {
+        id: 'sec_3_100',
+        points: 100,
+        text: 'Sauvegardes chiffrées quotidiennes, externalisées et testées régulièrement',
+        description: 'Reprise d\'activité en moins d\'une heure sans aucune perte de donnée'
+      }
+    ]
+  },
+
+  // Page 7 : Gestion Documentaire Q13 & Q14
+  {
+    id: 'q13_doc',
+    pillar: 'documentary',
+    pillarLabel: 'Gestion Documentaire',
+    title: 'Comment organisez-vous le stockage et le partage de vos documents d\'entreprise ?',
+    subtitle: 'Gestion du savoir et structuration de la mémoire de l\'entreprise',
+    options: [
+      {
+        id: 'doc_1_0',
+        points: 0,
+        text: 'Fichiers éparpillés sur les PC locaux, clés USB ou pièces jointes',
+        description: 'Temps considérable perdu à rechercher la dernière version'
+      },
+      {
+        id: 'doc_1_50',
+        points: 50,
+        text: 'Dossier Cloud partagé mais arborescence complexe ou mal rangée',
+        description: 'Création de doublons fréquents et doutes sur le document officiel'
+      },
+      {
+        id: 'doc_1_100',
+        points: 100,
+        text: 'Base de connaissances centralisée et indexée avec une taxonomie claire',
+        description: 'Mémoire interne structurée, accès en moins de 10 secondes'
+      }
+    ]
+  },
+  {
+    id: 'q14_doc',
+    pillar: 'documentary',
+    pillarLabel: 'Gestion Documentaire',
+    title: 'Comment un collaborateur accède-t-il à une procédure ou savoir d\'entreprise ?',
+    subtitle: 'Facilité d\'autonomie des équipes face à l\'information technique',
+    options: [
+      {
+        id: 'doc_2_0',
+        points: 0,
+        text: 'Obligation de demander à un collègue ou recherche prolongée vaine',
+        description: 'Perte de temps en chaîne et frein sur l\'onboarding de collaborateurs'
+      },
+      {
+        id: 'doc_2_50',
+        points: 50,
+        text: 'Recherche fastidieuse au sein de nombreux fichiers Word/PDF du serveur',
+        description: 'Information difficile d\'accès et souvent obsolète'
+      },
+      {
+        id: 'doc_2_100',
+        points: 100,
+        text: 'Moteur de recherche interne ou assistant IA branché sur vos documents',
+        description: 'Onboarding éclair et réponse exacte fournie instantanément'
       }
     ]
   }
@@ -181,8 +407,16 @@ export function calculateDiagnosticResults(answers: UserAnswers) {
     };
   }
 
-  let totalPoints = 0;
+  // Calculate points accumulated per pillar, tracking how many questions exist for each
   const pillarPointsMap: Record<PillarId, number> = {
+    collaboration: 0,
+    ai: 0,
+    security: 0,
+    automation: 0,
+    documentary: 0
+  };
+
+  const pillarCountsMap: Record<PillarId, number> = {
     collaboration: 0,
     ai: 0,
     security: 0,
@@ -193,11 +427,29 @@ export function calculateDiagnosticResults(answers: UserAnswers) {
   DIAGNOSTIC_QUESTIONS.forEach((q) => {
     const ans = answers[q.id];
     const pts = ans ? ans.points : 0;
-    totalPoints += pts;
-    pillarPointsMap[q.pillar] = pts;
+    pillarPointsMap[q.pillar] += pts;
+    pillarCountsMap[q.pillar] += 1;
   });
 
-  const globalScore = Math.round(totalPoints / DIAGNOSTIC_QUESTIONS.length);
+  // Calculate final score per pillar as the average of the points obtained (ensuring it stays on 100)
+  const pillarAverages: Record<PillarId, number> = {
+    collaboration: 0,
+    ai: 0,
+    security: 0,
+    automation: 0,
+    documentary: 0
+  };
+
+  let totalScoreSum = 0;
+  const pillars: PillarId[] = ['collaboration', 'ai', 'security', 'automation', 'documentary'];
+  
+  pillars.forEach((p) => {
+    const count = pillarCountsMap[p] || 1;
+    pillarAverages[p] = Math.round(pillarPointsMap[p] / count);
+    totalScoreSum += pillarAverages[p];
+  });
+
+  const globalScore = Math.round(totalScoreSum / pillars.length);
 
   // Status logic from PRD 5.1
   let statusLabel: 'Prioritaire' | 'En transition' | 'Optimisé' = 'Prioritaire';
@@ -215,19 +467,16 @@ export function calculateDiagnosticResults(answers: UserAnswers) {
   }
 
   // Hours saved calculation (Dynamic estimate based on gaps, defaulting to ~18h as requested in PRD)
-  // If score is 82, they still have ~12h to gain. If score is 45, they can gain 22h.
-  const baseHours = 32;
-  const calculatedHours = Math.max(8, Math.round(baseHours - (globalScore * 0.22)));
-  // We ensure it clearly aligns with the "+18 h / mois" benchmark mentioned in PRD section 3 & 4
   const hoursSavedPerMonth = globalScore >= 78 ? 12 : (globalScore >= 50 ? 18 : 26);
 
   // Radar chart data mapping
-  const radarData: PillarScore[] = DIAGNOSTIC_QUESTIONS.map((q) => ({
-    pillar: q.pillar,
-    subject: q.pillarLabel,
-    A: pillarPointsMap[q.pillar] || 0,
-    fullMark: 100
-  }));
+  const radarData: PillarScore[] = [
+    { pillar: 'collaboration', subject: 'Collaboration', A: pillarAverages.collaboration, fullMark: 100 },
+    { pillar: 'ai', subject: 'IA Générative', A: pillarAverages.ai, fullMark: 100 },
+    { pillar: 'security', subject: 'Sécurité & RGPD', A: pillarAverages.security, fullMark: 100 },
+    { pillar: 'automation', subject: 'Automatisation', A: pillarAverages.automation, fullMark: 100 },
+    { pillar: 'documentary', subject: 'Gestion Doc.', A: pillarAverages.documentary, fullMark: 100 }
+  ];
 
   // Recommendations Generation
   const recommendations: Recommendation[] = [];
@@ -276,7 +525,7 @@ export function calculateDiagnosticResults(answers: UserAnswers) {
   ];
 
   allPillarsInfo.forEach((info) => {
-    const pts = pillarPointsMap[info.pillar];
+    const pts = pillarAverages[info.pillar];
     let stat: 'Prioritaire' | 'En transition' | 'Optimisé' = 'Prioritaire';
     let act = info.actionLow;
 

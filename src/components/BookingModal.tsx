@@ -16,7 +16,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [selectedTab, setSelectedTab] = useState<'meeting' | 'training'>('meeting');
 
   // Load appointment booking URL from env, or fallback to a standard clean booking placeholder link
-  const googleCalendarBookingUrl = (import.meta as any).env.VITE_GOOGLE_CALENDAR_BOOKING_URL || 'https://calendar.google.com/calendar/appointments/schedules/';
+  const googleCalendarBookingUrl = (import.meta as any).env.VITE_GOOGLE_CALENDAR_BOOKING_URL || 'https://calendar.app.google/eH1mEg56RnWmJMj78';
+  const googleCalendarTrainingUrl = (import.meta as any).env.VITE_GOOGLE_CALENDAR_TRAINING_URL || googleCalendarBookingUrl;
 
   return (
     <div className="fixed inset-0 z-50 bg-[#132B63]/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto animate-fade-in">
@@ -74,7 +75,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           {selectedTab === 'meeting' ? (
             <div className="space-y-5">
               <p className="text-sm text-gray-600 font-normal leading-relaxed">
-                Bonjour <span className="font-semibold text-[#132B63]">{leadData?.firstName || 'Dirigeant'}</span>, réservez votre entretien individuel de diagnostic de 30 minutes avec un expert Nouvance IA.
+                Bonjour <span className="font-semibold text-[#132B63]">{leadData?.firstName || 'Dirigeant'}</span>, réservez votre entretien individuel de diagnostic de 20 minutes avec un expert Nouvance IA.
               </p>
 
               {/* Session Benefits list */}
@@ -139,10 +140,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <div className="pt-2">
                 <a
-                  href={googleCalendarBookingUrl}
+                  href={googleCalendarTrainingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => onSuccessBooking('Google Calendar Link', 'Clicked')}
+                  onClick={() => onSuccessBooking('Google Calendar Training Link', 'Clicked')}
                   className="w-full h-14 bg-[#7B3FF2] text-white font-semibold rounded-[8px] shadow-md hover:bg-[#7B3FF2]/90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center space-x-3 text-sm sm:text-base cursor-pointer"
                 >
                   <Calendar className="w-5 h-5 text-[#A96DFF]" />
