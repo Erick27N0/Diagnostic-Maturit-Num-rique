@@ -16,7 +16,7 @@ export const WelcomeView: React.FC<WelcomeViewProps> = ({ onStart }) => {
 
       {/* Titre & Sous-titre */}
       <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#132B63] max-w-3xl leading-tight mb-6">
-        Évaluez la maturité numérique et IA de votre entreprise en 1 minute
+        Évaluez la maturité numérique et IA de votre entreprise en 3 minutes
       </h1>
 
       <p className="text-lg sm:text-xl text-gray-600 max-w-2xl font-normal leading-relaxed mb-10">
